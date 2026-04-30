@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+/*   font-family: "Inter", sans-serif;
+    font-family: "DM Sans", sans-serif; */
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --main_color : #6B5B95;  
+  --p_color: #8C756A;          
+  --bg_color: #F5F5F5;         
+  --white_color:#ffffff;       
+  --color_heading: #3B3A36;      
+  --border_color: #C1BDB3;       
+}
+body{
+  background-color: #fff;
+  font-family: "Inter", sans-serif;
+  padding: 150px;
+}
+img{
+  width: 100%;
+}
+h1 , h2 , h3 , h4 , h5 , h6{
+  color: var(--color_heading);
+  font-family:"DM Sans", sans-serif; ;
+}
+
+span{
+  color: var(--main_color);
+}
+
+p{
+  color: var(--p_color);
+}
+
+input, button , select , textarea{
+  border: none;
+  outline: none;
+}
+
+a{
+  text-decoration: none;
+  color: var(--color_heading);
+}
+
+.container{
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1350px;
+}
+
+.btn{
+  padding: 10px 18px;
+  text-transform: capitalize;
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: var(--main_color);
+  color: var(--white_color);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  transition: 0.3s;
+  width: max-content;
+}
+.btn:hover{
+  scale: 1.1;
+}
+.loading_img_item{
+  background-color: whitesmoke;
+  background-image: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 25%, #e0e0e0 50%, #f0f0f0 50%, #f0f0f0 75%, #e0e0e0 75%);
+  background-size: 20px 20px;
+    animation: loading 1s linear infinite;
+    background-repeat: no-repeat;
+    background-position: left -40 top 0;
+
+}
+@keyframes loading {
+    0% {
+        background-position: left -40px top 0;
+    }
+    100% {
+        background-position: left 100% top 0;
+    }
+}
+
+.in-cart{
+  border-color: var(--main_color) !important;
+}
+
+/* toast */
+.toast-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  min-width: 200px;
+  max-width: 300px;
+}
+.toast-img{
+  width: auto;
+  height: 50px;
+  object-fit: cover;
+}
+.toast-content{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 14px;
+}
+.toast-wrapper strong{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.toast-content .btn{
+  margin-top:5px ;
+  font-size: 13px;
+}

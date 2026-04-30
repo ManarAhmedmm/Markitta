@@ -1,0 +1,14 @@
+.category_products .container {
+  display: flex;
+  flex-direction: column;
+}
+.top_slide {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}

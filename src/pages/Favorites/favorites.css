@@ -1,0 +1,92 @@
+/* الصفحة الأساسية */
+.favorites_page {
+  min-height: 100vh;
+  background: #f6f7fb;
+  padding: 50px 20px;
+}
+
+/* الكونتينر */
+.favorites_container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* الهيدر */
+.favorites_header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.favorites_header h1 {
+  font-size: 34px;
+  font-weight: 800;
+  color: #222;
+}
+
+.favorites_header p {
+  color: #777;
+  margin-top: 8px;
+}
+
+/* الجريد */
+.favorites_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+/* كل عنصر */
+.fav_item_wrapper {
+  position: relative;
+}
+
+/* زرار الحذف */
+.remove_btn {
+  margin-top: 10px;
+  padding: 6px 14px;
+  border: none;
+  background: #ff3b3b;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  height: 50PX;
+  width: fit-content;  
+}
+.remove_btn:hover {
+  background: #e60000;
+  transform: scale(1.02);
+}
+/* Empty State */
+.empty_favorites {
+  text-align: center;
+  margin-top: 80px;
+  background: white;
+  padding: 60px 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.empty_favorites .icon {
+  font-size: 60px;
+  color: #ff4d6d;
+  margin-bottom: 15px;
+}
+
+.empty_favorites h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.empty_favorites p {
+  color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .favorites_header h1 {
+    font-size: 26px;
+  }
+}
