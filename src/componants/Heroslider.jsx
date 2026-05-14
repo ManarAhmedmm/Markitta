@@ -1,10 +1,10 @@
 import React from 'react';
-// Import Swiper React components
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Link } from "react-router-dom";
-// import required modules
+
 import { Autoplay, Pagination } from 'swiper/modules';
 import hero1 from "../img/hero1.png";
 

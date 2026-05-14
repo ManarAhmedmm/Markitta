@@ -32,7 +32,7 @@ function Searchbox() {
           } else {
             setSuggestions([]);
           }
-        }, 300); // Delay of 300ms
+        }, 300); 
 
         return () => clearTimeout(delayDebounceFn);
       }, [searchterm]);

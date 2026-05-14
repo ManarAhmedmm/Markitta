@@ -1,16 +1,16 @@
-import React, { Children, use, useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 export const CartContext = React.createContext();
+
 function CartProvider({ children }) {
 
-   //favorites
-   const [favoriteItems, setFavoriteItems] = useState(() => {
+
+  const [favoriteItems, setFavoriteItems] = useState(() => {
     const storedFavoriteItems = localStorage.getItem("favoriteItems");
     return storedFavoriteItems ? JSON.parse(storedFavoriteItems) : [];
   });
 
-
- const addToFavorites = (item) => {
+  const addToFavorites = (item) => {
     if (!favoriteItems.some((favItem) => favItem.id === item.id)) {
       setFavoriteItems((prevItems) => [...prevItems, item]);
     }
@@ -25,18 +25,6 @@ function CartProvider({ children }) {
   };
 
 
-
-
-
-
-
-
-
-
-
-
-
-    //cart
   const [cartItems, setCartItems] = useState(() => {
     const storedCartItems = localStorage.getItem("cartItems");
     return storedCartItems ? JSON.parse(storedCartItems) : [];
@@ -68,9 +56,16 @@ function CartProvider({ children }) {
     setCartItems((prevItems) => [...prevItems, { ...item, quantity: 1 }]);
   };
 
+ 
+  const clearCart = () => {
+    setCartItems([]);
+    localStorage.removeItem("cartItems");
+  };
+
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
+
   return (
     <CartContext.Provider
       value={{
@@ -79,6 +74,7 @@ function CartProvider({ children }) {
         increaseQuantity,
         decreaseQuantity,
         removeItem,
+        clearCart, 
         favoriteItems,
         addToFavorites,
         removeFromFavorites,
