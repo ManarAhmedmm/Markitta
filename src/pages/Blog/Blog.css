@@ -1,6 +1,56 @@
-.blog-page { padding: 48px 16px; }
-.blog-page h1 { margin-bottom: 8px; }
-.posts { margin-top: 20px; display: grid; gap: 16px; }
-.post { padding: 16px; border-radius: 8px; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
-.post h3 { margin: 0 0 6px 0; }
-.read-more { color: #0066cc; text-decoration: underline; }
+.blog-page {
+  padding: 64px 16px;
+}
+
+.blog-hero {
+  max-width: 850px;
+  margin-bottom: 36px;
+}
+
+.blog-hero h1 {
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  margin: 12px 0 16px;
+  line-height: 1.05;
+}
+
+.blog-hero p {
+  color: var(--p_color);
+  line-height: 1.75;
+}
+
+.posts {
+  display: grid;
+  gap: 22px;
+}
+
+.post {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 26px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.post h3 {
+  margin: 0 0 10px;
+}
+
+.post p {
+  color: var(--p_color);
+  line-height: 1.8;
+}
+
+.btn.read-more {
+  background: var(--main_color);
+  border-radius: 999px;
+  padding: 12px 20px;
+}
+
+@media (max-width: 700px) {
+  .post {
+    grid-template-columns: 1fr;
+  }
+}

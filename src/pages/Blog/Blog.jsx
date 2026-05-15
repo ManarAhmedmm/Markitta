@@ -9,15 +9,20 @@ const samplePosts = [
 export default function Blog() {
   return (
     <main className="blog-page container">
-      <h1>Blog</h1>
-      <p>Latest articles and tips from Markitta.</p>
+      <section className="blog-hero">
+        <span>Latest stories</span>
+        <h1>Inspiration for better shopping and product care.</h1>
+        <p>Read quick articles made for Markitta customers, with simple tips and product ideas.</p>
+      </section>
 
       <section className="posts">
         {samplePosts.map(post => (
           <article key={post.id} className="post">
-            <h3>{post.title}</h3>
-            <p>{post.excerpt}</p>
-            <a href="#" className="read-more">Read more</a>
+            <div>
+              <h3>{post.title}</h3>
+              <p>{post.excerpt}</p>
+            </div>
+            <button type="button" className="btn read-more">Read More</button>
           </article>
         ))}
       </section>
