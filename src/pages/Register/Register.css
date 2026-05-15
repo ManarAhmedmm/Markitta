@@ -1,0 +1,134 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 150px);
+  background-color: var(--bg_color);
+  padding: 40px 20px;
+}
+
+.register-box {
+  background: var(--white_color);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid var(--border_color);
+}
+
+.register-box h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--main_color);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid var(--border_color);
+  border-radius: 10px;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: all 0.3s;
+  background: var(--bg_color);
+  color: var(--color_heading);
+}
+
+.form-group input::placeholder {
+  color: #999;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--main_color);
+  background: var(--white_color);
+  box-shadow: 0 0 0 3px rgba(107, 91, 149, 0.15);
+}
+
+.error-input {
+  border-color: var(--danger_color) !important;
+  background: #fff5f5;
+}
+
+.error-text {
+  color: var(--danger_color);
+  font-size: 13px;
+  margin-top: 6px;
+  display: block;
+  font-weight: 500;
+}
+
+.register-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--main_color);
+  color: var(--white_color);
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+.register-btn:hover {
+  background-color: var(--main_dark);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(107, 91, 149, 0.4);
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 14px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  border: 1px solid #c3e6cb;
+  font-weight: 500;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 25px;
+  color: var(--p_color);
+  font-size: 15px;
+}
+
+.login-link a {
+  color: var(--main_color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .register-box {
+    padding: 30px 20px;
+  }
+
+  .register-box h2 {
+    font-size: 24px;
+  }
+
+  .form-group input {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .register-btn {
+    font-size: 16px;
+    padding: 13px;
+  }
+}

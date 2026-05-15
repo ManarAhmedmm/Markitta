@@ -66,7 +66,7 @@ const handeladdtofav = () => {
   }
 };
   return (
-    // <div className={isInCart ? "product in-cart" : "product"}>
+  
         <div className={`product ${isInCart ? "in-cart" : ""} ${isFavorite ? "in-fav" : ""}`}>
         <Link to={`/products/${product.id}`} className="link_product">
          <span className='status_cart'>
