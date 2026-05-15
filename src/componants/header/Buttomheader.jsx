@@ -8,7 +8,6 @@ import "./header.css";
 const navLinks = [
   { title: "Home", link: "/" },
   { title: "About", link: "/about" },
-  { title: "Accessorise", link: "/accessorise" },
   { title: "Blog", link: "/blog" },
   { title: "Contact", link: "/contact" }
 ];

@@ -1,0 +1,6 @@
+.blog-page { padding: 48px 16px; }
+.blog-page h1 { margin-bottom: 8px; }
+.posts { margin-top: 20px; display: grid; gap: 16px; }
+.post { padding: 16px; border-radius: 8px; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+.post h3 { margin: 0 0 6px 0; }
+.read-more { color: #0066cc; text-decoration: underline; }

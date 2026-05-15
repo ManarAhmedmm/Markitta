@@ -1,0 +1,28 @@
+.about-page {
+  padding: 48px 16px;
+  color: #222;
+}
+
+.about-page h1 {
+  color: #111;
+  margin-bottom: 12px;
+}
+
+.about-page p {
+  max-width: 800px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.about-values {
+  margin-top: 24px;
+}
+
+.about-values h2 {
+  margin-bottom: 8px;
+}
+
+.about-values ul {
+  list-style: disc;
+  padding-left: 20px;
+}
