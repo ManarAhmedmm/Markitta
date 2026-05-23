@@ -18,7 +18,7 @@ import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import OrderShipped from "./pages/OrderShipped/OrderShipped";
 
-
+// NEW: static pages
 import About from "./pages/About/About";
 import Blog from "./pages/Blog/Blog";
 import Contact from "./pages/Contact/Contact";
@@ -63,16 +63,100 @@ function AppShell() {
 
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-           <Route path="/order-shipped" element={<OrderShipped />} />
-          <Route path="/" element={<Home />} />
-          
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/search" element={<Searchresults />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/products/:id" element={<ProductDetail />} />
-          <Route path="/category/:category" element={<CategoryPage />} />
+        
+          <Route
+            path="/"
+            element={currentUser ? <Home /> : <Navigate to="/login" replace />}
+          />
+
+        
+          <Route
+            path="/login"
+            element={currentUser ? <Navigate to="/" replace /> : <Login />}
+          />
+          <Route
+            path="/register"
+            element={currentUser ? <Navigate to="/" replace /> : <Register />}
+          />
+
+        
+          <Route
+            path="/about"
+            element={
+              <Protected>
+                <About />
+              </Protected>
+            }
+          />
+          <Route
+            path="/blog"
+            element={
+              <Protected>
+                <Blog />
+              </Protected>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <Protected>
+                <Contact />
+              </Protected>
+            }
+          />
+
+         
+          <Route
+            path="/cart"
+            element={
+              <Protected>
+                <Cart />
+              </Protected>
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <Protected>
+                <Favorites />
+              </Protected>
+            }
+          />
+          <Route
+            path="/search"
+            element={
+              <Protected>
+                <Searchresults />
+              </Protected>
+            }
+          />
+          <Route
+            path="/products/:id"
+            element={
+              <Protected>
+                <ProductDetail />
+              </Protected>
+            }
+          />
+          <Route
+            path="/category/:category"
+            element={
+              <Protected>
+                <CategoryPage />
+              </Protected>
+            }
+          />
+          <Route
+            path="/order-shipped"
+            element={
+              <Protected>
+                <OrderShipped />
+              </Protected>
+            }
+          />
+
+       
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AnimatePresence>
 
