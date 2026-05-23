@@ -1,32 +1,53 @@
-import { Route, Routes, useLocation } from "react-router-dom"; 
-import Buttomheader from "./componants/header/Buttomheader";
+
+import { Route, Routes, useLocation, Navigate } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import { Toaster } from "react-hot-toast";
+
 import Topheader from "./componants/header/Topheader";
+import Buttomheader from "./componants/header/Buttomheader";
+import Footer from "./componants/Footer/Footer";
+import Scroltotop from "./componants/Scroltotop";
+
 import Home from "./pages/Home/Home";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import Cart from "./pages/cart/Cart";
-import { Toaster } from "react-hot-toast";
-import Scroltotop from "./componants/Scroltotop";
-import { AnimatePresence } from "framer-motion";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import Searchresults from "./pages/Searchresults";
 import Favorites from "./pages/Favorites/Favorites";
-import Footer from "./componants/Footer/Footer";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
-import OrderShipped from "./pages/OrderShipped/OrderShipped"; 
-import { UserProvider } from "./context/UserContext"; 
+import OrderShipped from "./pages/OrderShipped/OrderShipped";
 
-function App() {
+
+import About from "./pages/About/About";
+import Blog from "./pages/Blog/Blog";
+import Contact from "./pages/Contact/Contact";
+
+import { UserProvider, useUser } from "./context/UserContext";
+
+function Protected({ children }) {
+  const { currentUser } = useUser();
+  if (!currentUser) return <Navigate to="/login" replace />;
+  return children;
+}
+
+function AppShell() {
   const location = useLocation();
+  const { currentUser } = useUser();
+
+  
+  const isAuthPage =
+    location.pathname === "/login" || location.pathname === "/register";
 
   return (
-  
-    <UserProvider>
-      <header>
-        <Topheader />
-        <Buttomheader />
-      </header>
-      
+    <>
+      {!isAuthPage && (
+        <header>
+          <Topheader />
+          <Buttomheader />
+        </header>
+      )}
+
       <Toaster
         position="bottom-right"
         toastOptions={{
@@ -37,26 +58,116 @@ function App() {
           },
         }}
       />
+
       <Scroltotop />
-      
+
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-           <Route path="/order-shipped" element={<OrderShipped />} />
-          <Route path="/" element={<Home />} />
+      
+          <Route
+            path="/"
+            element={currentUser ? <Home /> : <Navigate to="/login" replace />}
+          />
+
+         
+          <Route
+            path="/login"
+            element={currentUser ? <Navigate to="/" replace /> : <Login />}
+          />
+          <Route
+            path="/register"
+            element={currentUser ? <Navigate to="/" replace /> : <Register />}
+          />
+
+          <Route
+            path="/about"
+            element={
+              <Protected>
+                <About />
+              </Protected>
+            }
+          />
+          <Route
+            path="/blog"
+            element={
+              <Protected>
+                <Blog />
+              </Protected>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <Protected>
+                <Contact />
+              </Protected>
+            }
+          />
+
+       
+          <Route
+            path="/cart"
+            element={
+              <Protected>
+                <Cart />
+              </Protected>
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <Protected>
+                <Favorites />
+              </Protected>
+            }
+          />
+          <Route
+            path="/search"
+            element={
+              <Protected>
+                <Searchresults />
+              </Protected>
+            }
+          />
+          <Route
+            path="/products/:id"
+            element={
+              <Protected>
+                <ProductDetail />
+              </Protected>
+            }
+          />
+          <Route
+            path="/category/:category"
+            element={
+              <Protected>
+                <CategoryPage />
+              </Protected>
+            }
+          />
+          <Route
+            path="/order-shipped"
+            element={
+              <Protected>
+                <OrderShipped />
+              </Protected>
+            }
+          />
+
           
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/search" element={<Searchresults />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/products/:id" element={<ProductDetail />} />
-          <Route path="/category/:category" element={<CategoryPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AnimatePresence>
-     
-      <Footer /> 
-    </UserProvider>
+
+      {!isAuthPage && <Footer />}
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <UserProvider>
+      <AppShell />
+    </UserProvider>
+  );
+}
